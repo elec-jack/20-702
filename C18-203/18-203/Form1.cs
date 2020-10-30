@@ -210,6 +210,7 @@ namespace _18_203
                 //檢查BARCODE
                 BarCodeCheck();
                 myData.SetProductBodyID(ss);
+                tb_ItemBarcode.Text = ssd.ItemBarcode;
             }
             catch (Exception error)
             {
@@ -418,16 +419,11 @@ namespace _18_203
                     NoBarcodeSeriealNo++;
                 }
                 CurrentcountScrew.SaveCountToFile(FilePathScrewCount);
-                //if (NumOfAxis==3)
-                //{
-                //    CurrentcountSite.SaveCountToFile(FilePathSiteCount);
-                //}
-                //CurrentcountBottomCap.SaveCountToFile(FilePathBottomCapCount);
-                //CurrentcountRS.SaveCountToFile(FilePathRSCount);
-                //CurrentcountTopCap.SaveCountToFile(FilePathTopCapCount);
+                
                 //PC->PLC寫檔完成
                 PLC1.Write(PLCSaveScrewDataFinish, 1);
                 DataSaveCount = 0;
+                tb_ItemBarcode.Text = "";
             }
             //PLC讀取
             ReadPLCDevice();
@@ -540,7 +536,7 @@ namespace _18_203
         private void ReflashDisplay()
         {
             #region --主頁--
-            tb_ItemBarcode.Text = ssd.ItemBarcode;
+            //tb_ItemBarcode.Text = ssd.ItemBarcode;
             tb_ScrewBarcode.Text = CurrentcountScrew.Barcode;
             tb_CountOfScrew.Text = CurrentcountScrew.Count.ToString();
             #endregion

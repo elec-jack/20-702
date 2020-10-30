@@ -186,3 +186,4 @@ D:\RP20-702\C18-203\18-203\obj\Debug\_18_203.Properties.Resources.resources
 D:\RP20-702\C18-203\18-203\obj\Debug\18-203.csproj.GenerateResource.Cache
 D:\RP20-702\C18-203\18-203\obj\Debug\18-203.exe.manifest
 D:\RP20-702\C18-203\18-203\obj\Debug\18-203.application
+D:\RP20-702\C18-203\18-203\obj\Debug\18-203.csprojResolveAssemblyReference.cache
