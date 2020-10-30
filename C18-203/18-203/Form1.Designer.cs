@@ -272,15 +272,13 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tbBodyBarcodeCheckCode = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.pbDeleteOldBarcode = new System.Windows.Forms.Button();
-            this.tbOldBodyBarcode = new System.Windows.Forms.TextBox();
-            this.label56 = new System.Windows.Forms.Label();
             this.pb_ReLoadScrew = new System.Windows.Forms.Button();
             this.tb_CountOfScrew_E = new System.Windows.Forms.TextBox();
             this.pb_SetPartNo = new System.Windows.Forms.Button();
             this.tb_ScrewPartNo = new System.Windows.Forms.TextBox();
             this.label27 = new System.Windows.Forms.Label();
             this.tb_Message = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -3037,11 +3035,9 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.PaleGoldenrod;
+            this.tabPage2.Controls.Add(this.button1);
             this.tabPage2.Controls.Add(this.tbBodyBarcodeCheckCode);
             this.tabPage2.Controls.Add(this.label11);
-            this.tabPage2.Controls.Add(this.pbDeleteOldBarcode);
-            this.tabPage2.Controls.Add(this.tbOldBodyBarcode);
-            this.tabPage2.Controls.Add(this.label56);
             this.tabPage2.Controls.Add(this.pb_ReLoadScrew);
             this.tabPage2.Controls.Add(this.tb_CountOfScrew_E);
             this.tabPage2.Controls.Add(this.pb_SetPartNo);
@@ -3073,35 +3069,6 @@
             this.label11.Size = new System.Drawing.Size(93, 20);
             this.label11.TabIndex = 59;
             this.label11.Text = "本體檢查碼:";
-            // 
-            // pbDeleteOldBarcode
-            // 
-            this.pbDeleteOldBarcode.Location = new System.Drawing.Point(677, 595);
-            this.pbDeleteOldBarcode.Margin = new System.Windows.Forms.Padding(5);
-            this.pbDeleteOldBarcode.Name = "pbDeleteOldBarcode";
-            this.pbDeleteOldBarcode.Size = new System.Drawing.Size(133, 37);
-            this.pbDeleteOldBarcode.TabIndex = 58;
-            this.pbDeleteOldBarcode.Text = "刪除前筆條碼";
-            this.pbDeleteOldBarcode.UseVisualStyleBackColor = true;
-            this.pbDeleteOldBarcode.Click += new System.EventHandler(this.pbDeleteOldBarcode_Click);
-            // 
-            // tbOldBodyBarcode
-            // 
-            this.tbOldBodyBarcode.Location = new System.Drawing.Point(121, 600);
-            this.tbOldBodyBarcode.Margin = new System.Windows.Forms.Padding(5);
-            this.tbOldBodyBarcode.Name = "tbOldBodyBarcode";
-            this.tbOldBodyBarcode.Size = new System.Drawing.Size(546, 29);
-            this.tbOldBodyBarcode.TabIndex = 57;
-            // 
-            // label56
-            // 
-            this.label56.AutoSize = true;
-            this.label56.Location = new System.Drawing.Point(6, 603);
-            this.label56.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label56.Name = "label56";
-            this.label56.Size = new System.Drawing.Size(105, 20);
-            this.label56.TabIndex = 56;
-            this.label56.Text = "前筆本體條碼";
             // 
             // pb_ReLoadScrew
             // 
@@ -3163,6 +3130,17 @@
             this.tb_Message.Name = "tb_Message";
             this.tb_Message.Size = new System.Drawing.Size(1334, 82);
             this.tb_Message.TabIndex = 0;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(859, 595);
+            this.button1.Margin = new System.Windows.Forms.Padding(5);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(133, 37);
+            this.button1.TabIndex = 61;
+            this.button1.Text = "test";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
             // 
@@ -3463,9 +3441,6 @@
         private System.Windows.Forms.Label label104;
         private System.Windows.Forms.Label label106;
         private System.Windows.Forms.Label label105;
-        private System.Windows.Forms.Button pbDeleteOldBarcode;
-        private System.Windows.Forms.TextBox tbOldBodyBarcode;
-        private System.Windows.Forms.Label label56;
         private System.Windows.Forms.Label label113;
         private System.Windows.Forms.TextBox tbMachineRunSetting;
         private System.Windows.Forms.Button pbSetMachineRunSetting;
@@ -3493,6 +3468,7 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox tb_Overrall_Ax4;
         private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Button button1;
     }
 }
 
