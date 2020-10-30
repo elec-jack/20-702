@@ -360,6 +360,7 @@
             this.label2.TabIndex = 5;
             this.label2.Text = "螺絲條碼";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label2.Visible = false;
             // 
             // tb_ScrewBarcode
             // 
@@ -370,6 +371,7 @@
             this.tb_ScrewBarcode.Name = "tb_ScrewBarcode";
             this.tb_ScrewBarcode.Size = new System.Drawing.Size(873, 27);
             this.tb_ScrewBarcode.TabIndex = 4;
+            this.tb_ScrewBarcode.Visible = false;
             // 
             // tabControl1
             // 
@@ -1040,6 +1042,7 @@
             this.pb_LoadScrew.TabIndex = 46;
             this.pb_LoadScrew.Text = "重取數量";
             this.pb_LoadScrew.UseVisualStyleBackColor = true;
+            this.pb_LoadScrew.Visible = false;
             this.pb_LoadScrew.Click += new System.EventHandler(this.pb_LoadScrew_Click);
             // 
             // tb_CountOfScrew
@@ -1052,6 +1055,7 @@
             this.tb_CountOfScrew.Size = new System.Drawing.Size(102, 27);
             this.tb_CountOfScrew.TabIndex = 23;
             this.tb_CountOfScrew.Text = "0";
+            this.tb_CountOfScrew.Visible = false;
             // 
             // label34
             // 
@@ -1064,6 +1068,7 @@
             this.label34.TabIndex = 24;
             this.label34.Text = "數量";
             this.label34.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label34.Visible = false;
             // 
             // label113
             // 
@@ -1130,19 +1135,21 @@
             // 
             // tbInputBarcode
             // 
-            this.tbInputBarcode.Location = new System.Drawing.Point(104, 16);
+            this.tbInputBarcode.Location = new System.Drawing.Point(123, 16);
             this.tbInputBarcode.Name = "tbInputBarcode";
-            this.tbInputBarcode.Size = new System.Drawing.Size(387, 29);
+            this.tbInputBarcode.Size = new System.Drawing.Size(368, 29);
             this.tbInputBarcode.TabIndex = 7;
+            this.tbInputBarcode.Visible = false;
             // 
             // label147
             // 
             this.label147.AutoSize = true;
             this.label147.Location = new System.Drawing.Point(8, 19);
             this.label147.Name = "label147";
-            this.label147.Size = new System.Drawing.Size(77, 20);
+            this.label147.Size = new System.Drawing.Size(109, 20);
             this.label147.TabIndex = 10;
-            this.label147.Text = "條碼輸入:";
+            this.label147.Text = "材料條碼輸入:";
+            this.label147.Visible = false;
             // 
             // pbInputBarcode7110
             // 
@@ -1152,6 +1159,7 @@
             this.pbInputBarcode7110.TabIndex = 8;
             this.pbInputBarcode7110.Text = "儲存";
             this.pbInputBarcode7110.UseVisualStyleBackColor = true;
+            this.pbInputBarcode7110.Visible = false;
             this.pbInputBarcode7110.Click += new System.EventHandler(this.pbInputBarcode7110_Click);
             // 
             // tabPage3
@@ -3104,6 +3112,7 @@
             this.pb_ReLoadScrew.TabIndex = 51;
             this.pb_ReLoadScrew.Text = "更新條碼檔案";
             this.pb_ReLoadScrew.UseVisualStyleBackColor = true;
+            this.pb_ReLoadScrew.Visible = false;
             this.pb_ReLoadScrew.Click += new System.EventHandler(this.pb_ReLoadScrew_Click);
             // 
             // tb_CountOfScrew_E
@@ -3113,6 +3122,7 @@
             this.tb_CountOfScrew_E.Name = "tb_CountOfScrew_E";
             this.tb_CountOfScrew_E.Size = new System.Drawing.Size(96, 29);
             this.tb_CountOfScrew_E.TabIndex = 36;
+            this.tb_CountOfScrew_E.Visible = false;
             // 
             // pb_SetPartNo
             // 
@@ -3132,6 +3142,7 @@
             this.tb_ScrewPartNo.Name = "tb_ScrewPartNo";
             this.tb_ScrewPartNo.Size = new System.Drawing.Size(546, 29);
             this.tb_ScrewPartNo.TabIndex = 14;
+            this.tb_ScrewPartNo.Visible = false;
             // 
             // label27
             // 
@@ -3141,7 +3152,8 @@
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(77, 20);
             this.label27.TabIndex = 13;
-            this.label27.Text = "螺絲品號:";
+            this.label27.Text = "材料品號:";
+            this.label27.Visible = false;
             // 
             // tb_Message
             // 

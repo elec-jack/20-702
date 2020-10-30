@@ -269,15 +269,14 @@ namespace _18_203
                 ssd.GetRs232ScrewData(buffer, 4);
                 ssd._sd[3].ScrewDateTime = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
                 GetObjectBarcode();
-
-                //扣除數量
-                CurrentcountScrew.Count = CurrentcountScrew.Count - 1;//螺絲-1
-                //判斷沒螺絲就取新資料
-                if (CurrentcountScrew.Count <= 0)
-                {
-                    CurrentcountScrew.ReloadData(FilePathScrewCount);
-                    myData.PartsData[0].SetChangePartTime();
-                }
+                ////扣除數量
+                //CurrentcountScrew.Count = CurrentcountScrew.Count - 1;//螺絲-1
+                ////判斷沒螺絲就取新資料
+                //if (CurrentcountScrew.Count <= 0)
+                //{
+                //    CurrentcountScrew.ReloadData(FilePathScrewCount);
+                //    myData.PartsData[0].SetChangePartTime();
+                //}
                 DataSaveCount++;
                 //show
                 tb_Datetime_Ax4.Text = ssd._sd[3].ScrewDateTime;
@@ -305,14 +304,14 @@ namespace _18_203
                 ssd.GetRs232ScrewData(buffer, 3);
                 ssd._sd[2].ScrewDateTime = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
                 GetObjectBarcode();
-                //扣除數量
-                CurrentcountScrew.Count = CurrentcountScrew.Count - 1;//螺絲-1
-                //判斷沒螺絲就取新資料
-                if (CurrentcountScrew.Count <= 0)
-                {
-                    CurrentcountScrew.ReloadData(FilePathScrewCount);
-                    myData.PartsData[0].SetChangePartTime();
-                }
+                ////扣除數量
+                //CurrentcountScrew.Count = CurrentcountScrew.Count - 1;//螺絲-1
+                ////判斷沒螺絲就取新資料
+                //if (CurrentcountScrew.Count <= 0)
+                //{
+                //    CurrentcountScrew.ReloadData(FilePathScrewCount);
+                //    myData.PartsData[0].SetChangePartTime();
+                //}
                 DataSaveCount++;
                 //show
                 tb_Datetime_Ax3.Text = ssd._sd[2].ScrewDateTime;
@@ -340,14 +339,14 @@ namespace _18_203
                 ssd.GetRs232ScrewData(buffer, 2);
                 ssd._sd[1].ScrewDateTime = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
                 GetObjectBarcode();
-                //扣除數量
-                CurrentcountScrew.Count = CurrentcountScrew.Count - 1;//螺絲-1
-                //判斷沒螺絲就取新資料
-                if (CurrentcountScrew.Count <= 0)
-                {
-                    CurrentcountScrew.ReloadData(FilePathScrewCount);
-                    myData.PartsData[0].SetChangePartTime();
-                }
+                ////扣除數量
+                //CurrentcountScrew.Count = CurrentcountScrew.Count - 1;//螺絲-1
+                ////判斷沒螺絲就取新資料
+                //if (CurrentcountScrew.Count <= 0)
+                //{
+                //    CurrentcountScrew.ReloadData(FilePathScrewCount);
+                //    myData.PartsData[0].SetChangePartTime();
+                //}
                 DataSaveCount++;
                 //show
                 tb_Datetime_Ax2.Text = ssd._sd[1].ScrewDateTime;
@@ -375,14 +374,14 @@ namespace _18_203
                 ssd.GetRs232ScrewData(buffer, 1);
                 ssd._sd[0].ScrewDateTime = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
                 GetObjectBarcode();
-                //扣除數量
-                CurrentcountScrew.Count--;//螺絲-1
-                //判斷沒螺絲就取新資料
-                if (CurrentcountScrew.Count <= 0)
-                {
-                    CurrentcountScrew.ReloadData(FilePathScrewCount);
-                    myData.PartsData[0].SetChangePartTime();
-                }
+                ////扣除數量
+                //CurrentcountScrew.Count--;//螺絲-1
+                ////判斷沒螺絲就取新資料
+                //if (CurrentcountScrew.Count <= 0)
+                //{
+                //    CurrentcountScrew.ReloadData(FilePathScrewCount);
+                //    myData.PartsData[0].SetChangePartTime();
+                //}
                 DataSaveCount++;
                 //show
                 tb_Datetime_Ax1.Text = ssd._sd[0].ScrewDateTime;
@@ -667,36 +666,12 @@ namespace _18_203
             //螺絲
             if (CurrentcountScrew.Count <= 0)
             {
-                PLC1.Write(PLCOutOfScrew, 0);
+                PLC1.Write(PLCOutOfScrew, (Int16)0);
             }
             else
             {
-                PLC1.Write(PLCOutOfScrew, 1);
+                PLC1.Write(PLCOutOfScrew, (Int16)1);
             }
-            //if (NumOfAxis==3)
-            //{
-            //    //固定承座
-            //    if (CurrentcountSite.Count <= 0)
-            //    {
-            //        PLC1.Write(PLCOutOfSite, 0);
-            //    }
-            //    else
-            //    {
-            //        PLC1.Write(PLCOutOfSite, 1);
-            //    }
-            //}
-            //if (NumOfAxis==4)
-            //{
-            //    //下蓋板
-            //    if (CurrentcountBottomCap.Count <= 0)
-            //    {
-            //        PLC1.Write(PLCOutOfBottomCap, 0);
-            //    }
-            //    else
-            //    {
-            //        PLC1.Write(PLCOutOfBottomCap, 1);
-            //    }
-            //}
         }
         #endregion
         #region --上報資料相關--

@@ -15,8 +15,6 @@ namespace _18_203
         private int _noOfOeeTime;
         private int PowerOnTotalTime,MachineRunTotalTime;
         private Timer t1 = new Timer();
-        private Timer t2 = new Timer();
-        private Timer t3 = new Timer();
         #endregion
         #region --Create--
         /// <summary>
@@ -65,13 +63,12 @@ namespace _18_203
             t1.Interval = 1000;
             t1.Tick += T1_Tick;
             t1.Start();
-            t2.Interval = 10000;
-            t2.Tick += T2_Tick;
-            t2.Start();
-            t3.Interval = 60000;
-            t3.Tick += T3_Tick;
-            t3.Start();
             #endregion
+        }
+        ~UpdateServerData()
+        {
+            string str = PowerOnTotalTime.ToString() + Environment.NewLine + MachineRunTotalTime.ToString();
+            File.WriteAllText(recordFilePath, str);
         }
         #endregion
         #region --OEE計時--
@@ -87,19 +84,6 @@ namespace _18_203
             SetOeePowerOnTime();
             SetOeeMachineRunTime();
             t1.Start();
-        }
-        private void T2_Tick(object sender, EventArgs e)
-        {
-            t2.Stop();
-            string str = PowerOnTotalTime.ToString() + Environment.NewLine + MachineRunTotalTime.ToString();
-            File.WriteAllText(recordFilePath, str);
-            t2.Start();
-        }
-        private void T3_Tick(object sender, EventArgs e)
-        {
-            t3.Stop();
-            File.Copy(recordFilePath, backupFilePath, true);
-            t3.Start();
         }
         #endregion
         #region --狀態--
