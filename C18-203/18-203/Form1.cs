@@ -536,11 +536,11 @@ namespace _18_203
             tbStaffReadFlag.Text = myData.StaffReadFlag.ToString();
             tbStaffID.Text = myData.GetStaffID();
             //材料ID
-            //tbPartsData_1.Text = myData.PartsData[0].GetPartsID();
-            //tbPartsCount_1.Text = myData.PartsData[0].count.ToString();
-            //tbPartsChangeHour_1.Text = myData.PartsData[0].changePartHour.ToString();
-            //tbPartsChangeMin_1.Text = myData.PartsData[0].changePartMin.ToString();
-            //tbPartsChangeSec_1.Text = myData.PartsData[0].changePartSec.ToString();
+            tbPartsData_1.Text = myData.PartsData[0].GetPartsID();
+            tbPartsCount_1.Text = myData.PartsData[0].count.ToString();
+            tbPartsChangeHour_1.Text = myData.PartsData[0].changePartHour.ToString();
+            tbPartsChangeMin_1.Text = myData.PartsData[0].changePartMin.ToString();
+            tbPartsChangeSec_1.Text = myData.PartsData[0].changePartSec.ToString();
             //tbPartsData_2.Text = myData.PartsData[1].GetPartsID();
             //tbPartsCount_2.Text = myData.PartsData[1].count.ToString();
             //tbPartsChangeHour_2.Text = myData.PartsData[1].changePartHour.ToString();
@@ -736,13 +736,13 @@ namespace _18_203
             //材料ID
             for (int i = 0; i <35; i++)
             {
-                //myServer.holdingRegisters[baseAddress + 75 + i] = usd.PartsData[0].id[i];
+                myServer.holdingRegisters[baseAddress + 75 + i] = usd.PartsData[0].id[i];
                 //myServer.holdingRegisters[baseAddress + 120 + i] = usd.PartsData[1].id[i];
             }
-            //myServer.holdingRegisters[baseAddress + 110] = usd.PartsData[0].count;
-            //myServer.holdingRegisters[baseAddress + 111] = usd.PartsData[0].changePartHour;
-            //myServer.holdingRegisters[baseAddress + 112] = usd.PartsData[0].changePartMin;
-            //myServer.holdingRegisters[baseAddress + 113] = usd.PartsData[0].changePartSec;
+            myServer.holdingRegisters[baseAddress + 110] = usd.PartsData[0].count;
+            myServer.holdingRegisters[baseAddress + 111] = usd.PartsData[0].changePartHour;
+            myServer.holdingRegisters[baseAddress + 112] = usd.PartsData[0].changePartMin;
+            myServer.holdingRegisters[baseAddress + 113] = usd.PartsData[0].changePartSec;
             //myServer.holdingRegisters[baseAddress + 155] = usd.PartsData[1].count;
             //myServer.holdingRegisters[baseAddress + 156] = usd.PartsData[1].changePartHour;
             //myServer.holdingRegisters[baseAddress + 157] = usd.PartsData[1].changePartMin;
