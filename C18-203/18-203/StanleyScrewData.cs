@@ -17,15 +17,15 @@ namespace StanleyDriver_RS232
         private string fileYear = DateTime.Now.ToString("yyyy");
         private string fileMonth = DateTime.Now.ToString("MM");
         private string fileDate = DateTime.Now.ToString("MMdd");
-        private string _itembarcode,_screwbarcode,_sitebarcode,_rsbarcode,_bottomcapbarcode,_topcapbarcode;
+        private string _itembarcode, _parts1barcode;
         
         public string ItemBarcode { get { return _itembarcode; } set { _itembarcode = value; } }            //工件條碼
-        public string ScrewBarcode { get { return _screwbarcode; } set { _screwbarcode = value; } }         //螺絲條碼
-        public string SiteBarcode { get { return _sitebarcode; } set { _sitebarcode = value; } }         //固定承座條碼
-        public string RsBarcode { get { return _rsbarcode; } set { _rsbarcode = value; } }                  //RS條碼
-        public string TopCapBarcode { get { return _topcapbarcode; } set { _topcapbarcode = value; } }                  //上蓋板條碼
-        public string BottomCapBarcode { get { return _bottomcapbarcode; } set { _bottomcapbarcode = value; } }         //下蓋板條碼
-        public ScrewData[] _sd = new ScrewData[4];
+        public string Parts1Barcode { get { return _parts1barcode; } set { _parts1barcode = value; } }         //工件條碼
+        //public string SiteBarcode { get { return _sitebarcode; } set { _sitebarcode = value; } }         //固定承座條碼
+        //public string RsBarcode { get { return _rsbarcode; } set { _rsbarcode = value; } }                  //RS條碼
+        //public string TopCapBarcode { get { return _topcapbarcode; } set { _topcapbarcode = value; } }                  //上蓋板條碼
+        //public string BottomCapBarcode { get { return _bottomcapbarcode; } set { _bottomcapbarcode = value; } }         //下蓋板條碼
+        public ScrewData[] _sd;
 
         /// <summary>
         ///建構子 
@@ -33,6 +33,7 @@ namespace StanleyDriver_RS232
         /// <param name="inNumberOfAxis">軸數量</param>
         public StanleyScrewData(int inNumberOfAxis)
         {
+            _sd = new ScrewData[inNumberOfAxis];
             for (int i = 0; i < inNumberOfAxis; i++)
             {
                 _sd[i] = new ScrewData();
@@ -58,8 +59,7 @@ namespace StanleyDriver_RS232
                 ws.Cell("F1").Value = "角度判定,A=OK,L=Low,H=High";
                 ws.Cell("G1").Value = "總合判定,A=OK,R=NOK";
                 ws.Cell("H1").Value = "鎖付日期時間";
-                ws.Cell("I1").Value = "螺絲條碼";
-                ws.Cell("J1").Value = "固定承座條碼";
+                ws.Cell("I1").Value = "材料條碼";
                 ws.Columns().AdjustToContents();
                 wb.SaveAs(fullfileName);
                 ws.Dispose();
@@ -88,8 +88,8 @@ namespace StanleyDriver_RS232
                 ws.Cell(i + 2, 6).Value = _sd[i].AngleStatus;
                 ws.Cell(i + 2, 7).Value = _sd[i].OverrallStatus;
                 ws.Cell(i + 2, 8).Value = _sd[i].ScrewDateTime;
-                ws.Cell(i + 2, 9).Value = ScrewBarcode;
-                ws.Cell(i + 2, 10).Value = SiteBarcode;
+                ws.Cell(i + 2, 9).Value = Parts1Barcode;
+                //ws.Cell(i + 2, 10).Value = SiteBarcode;
             }
             ws.Columns().AdjustToContents();
             wb.SaveAs(fullfileName);

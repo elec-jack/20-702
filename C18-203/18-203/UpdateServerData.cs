@@ -46,11 +46,13 @@ namespace _18_203
                 MachineRunTotalTime = Convert.ToInt32(sr.ReadLine());
                 sr.Dispose();
             }
+            //建立Parts物件
             for (int i = 0; i < numOfParts; i++)
             {
                 parts axis = new parts();
                 _partData.Add(axis);
             }
+            //建立screw driver物件
             for (int i = 0; i < numOfAxis; i++)
             {
                 ScrewSetting setting = new ScrewSetting();
@@ -67,9 +69,12 @@ namespace _18_203
         }
         ~UpdateServerData()
         {
+            t1.Stop();
+            t1.Dispose();
             string str = PowerOnTotalTime.ToString() + Environment.NewLine + MachineRunTotalTime.ToString();
             File.WriteAllText(recordFilePath, str);
         }
+
         #endregion
         #region --OEE計時--
         private void T1_Tick(object sender, EventArgs e)

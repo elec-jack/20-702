@@ -13,9 +13,9 @@ namespace _18_203
     {
         #region --定義初始化檔案--
         private string initailFilePath = @"D:\RP20-702\Resource\initailFile.xlsx";
-        private string FilePathScrewCount = @"D:\RP20-702\Resource\ScrewCount.xlsx";
+        private string FilePathParts1 = @"D:\RP20-702\Resource\Parts1.xlsx";
         private string filePath = @"D:\DataFile\";
-        private string ScrewPartNo = "";
+        private string Parts1Barcode = "";
         private int BarcodeHeader=3;
         private int NumOfAxis=2;
         private string BodyBarcodeCheckCode = "";
@@ -30,7 +30,7 @@ namespace _18_203
         #endregion
         #region --定義PLC--
         private MelsecMcNet PLC1;
-        private string PlcIpAddress="10.5.3.113";
+        private string PlcIpAddress="10.5.3.106";
         private int PlcPort=6000;
         //PLC->PC
         private int PLCBarcodeUseStatus = 0;
@@ -42,7 +42,7 @@ namespace _18_203
         private string PLCBarcodeCheckStartFlag = "D2042";
         private string PLCBarcodeCheck = "D2044";
         private string PLCBarcodeHeaderNOK = "D2047";
-        private string PLCOutOfScrew = "D2177";
+        private string PLCOutOfParts1 = "D2177";
         private string PLCSaveScrewDataFinish = "D2181";
         private string PLCResetMachineCountFlag = "D2182";
         private string PLCBarcodeUse = "D6000";
@@ -67,14 +67,14 @@ namespace _18_203
         private string oldCheckBarcodeHeader = "";
         private string stringNoBarcode = "NoBarcode";
         private int NoBarcodeSeriealNo = 0, DataSaveCount = 0;
-        private ObjectBarcodeAndCount CurrentcountScrew = new ObjectBarcodeAndCount();
-        private ObjectBarcodeAndCount CurrentcountSite = new ObjectBarcodeAndCount();
-        private ObjectBarcodeAndCount CurrentcountRS = new ObjectBarcodeAndCount();
-        private ObjectBarcodeAndCount CurrentcountTopCap = new ObjectBarcodeAndCount();
-        private ObjectBarcodeAndCount CurrentcountBottomCap = new ObjectBarcodeAndCount();
+        private ObjectBarcodeAndCount CurrentcountParts1 = new ObjectBarcodeAndCount();
+        //private ObjectBarcodeAndCount CurrentcountSite = new ObjectBarcodeAndCount();
+        //private ObjectBarcodeAndCount CurrentcountRS = new ObjectBarcodeAndCount();
+        //private ObjectBarcodeAndCount CurrentcountTopCap = new ObjectBarcodeAndCount();
+        //private ObjectBarcodeAndCount CurrentcountBottomCap = new ObjectBarcodeAndCount();
         #endregion
         #region --定義上報資料相關--
-        private const int numOfParts = 1;//part 0:螺絲;part1:固定座
+        private const int numOfParts = 1;
         private UpdateServerData myData;
         private ModbusServer myServer;
         private Int16 _machineRunSetting = 0;
@@ -102,11 +102,11 @@ namespace _18_203
             PlcIpAddress = Convert.ToString(ws.Cell("B2").Value);
             PlcPort = Convert.ToInt32(ws.Cell("C2").Value);
             BarcodeHeader = Convert.ToInt32(ws.Cell("D2").Value);
-            ScrewPartNo = Convert.ToString(ws.Cell("E2").Value);
+            Parts1Barcode = Convert.ToString(ws.Cell("E2").Value);
             BodyBarcodeCheckCode = Convert.ToString(ws.Cell("F2").Value);
             oldCheckBarcodeHeader = BodyBarcodeCheckCode;
             //display物件品號
-            tb_ScrewPartNo.Text = ScrewPartNo;
+            tb_ScrewPartNo.Text = Parts1Barcode;
             tbBodyBarcodeCheckCode.Text = BodyBarcodeCheckCode;
             //取得各物件數量條碼
             ssd = new StanleyScrewData(NumOfAxis);
@@ -157,13 +157,12 @@ namespace _18_203
             PLC1.ConnectTimeOut = 2000;
             PLC1.NetworkNumber = 0x00;
             PLC1.NetworkStationNumber = 0x00;
+            //Server
+            myData = new UpdateServerData(0, numOfParts, NumOfAxis);
+            myServer = new ModbusServer();
+            myServer.Listen();
             try
             {
-                //Server
-                myData = new UpdateServerData(1, numOfParts, NumOfAxis);
-                myServer = new ModbusServer();
-                myServer.Listen();
-            
                 //計時器開啟
                 timer1.Enabled = true;
             }
@@ -206,17 +205,25 @@ namespace _18_203
                 string ss = System.Text.Encoding.ASCII.GetString(buffer);
                 //資料丟入memory
                 ssd.ItemBarcode = ss;
-                ssd.ScrewBarcode = CurrentcountScrew.Barcode;
-                ssd.SiteBarcode = CurrentcountSite.Barcode;
+                ssd.Parts1Barcode = CurrentcountParts1.Barcode;
+                //ssd.SiteBarcode = CurrentcountSite.Barcode;
                 //檢查BARCODE
-                BarCodeCheck();
-                myData.SetProductBodyID(ss);
-                tb_ItemBarcode.Text = ssd.ItemBarcode;
+                bool result = BarCodeCheck(ss);
+                if (result)
+                {
+                    PLC1.Write("D1012", ss);
+                    myData.SetProductBodyID(ss);
+                    DisplayTextBox(tb_ItemBarcode, ssd.ItemBarcode);
+                }
+                else
+                {
+                    DisplayTextBox(tb_ItemBarcode, "條碼檢查有誤!!");
+                }
             }
             catch (Exception error)
             {
-                tb_Message.Text = "";
-                tb_Message.Text = "固定槍讀取:" + error.ToString();
+                DisplayTextBox(tb_Message, "");
+                DisplayTextBox(tb_Message, $"固定槍讀取:{error.ToString()}");
             }
         }
         //手持條碼
@@ -234,16 +241,16 @@ namespace _18_203
                 string[] newstring = ss.Split('*');
                 if (newstring.Length == 5)
                 {
-                    //螺絲條碼
-                    if (newstring[1] == ScrewPartNo)
+                    //Parts1條碼
+                    if (newstring[1].Equals(Parts1Barcode))
                     {
                         ObjectBarcodeAndCount obj = new ObjectBarcodeAndCount();
                         obj.Barcode = ss;
                         obj.Count = Convert.ToInt32(newstring[3]);
-                        obj.AddNewData(FilePathScrewCount);
+                        obj.AddNewData(FilePathParts1);
                     }
                     //如果都不符合
-                    if (newstring[1] != ScrewPartNo)
+                    if (!newstring[1].Equals(Parts1Barcode))
                     {
                         MessageBox.Show("無符合的品號");
                     }
@@ -255,44 +262,14 @@ namespace _18_203
             }
             catch (Exception error)
             {
-                tb_Message.Text = "";
-                tb_Message.Text = "手持條碼:" + error.ToString();
+                DisplayTextBox(tb_Message, "");
+                DisplayTextBox(tb_Message, $"手持條碼:{error.ToString()}");
             }
         }
         //軸4
         private void ax4_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            Thread.Sleep(800);
-            try
-            {
-                Byte[] buffer = new Byte[1024];
-                Int32 length = (sender as SerialPort).Read(buffer, 0, buffer.Length);
-                Array.Resize(ref buffer, length);
-                ssd.GetRs232ScrewData(buffer, 4);
-                ssd._sd[3].ScrewDateTime = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
-                GetObjectBarcode();
-                ////扣除數量
-                //CurrentcountScrew.Count = CurrentcountScrew.Count - 1;//螺絲-1
-                ////判斷沒螺絲就取新資料
-                //if (CurrentcountScrew.Count <= 0)
-                //{
-                //    CurrentcountScrew.ReloadData(FilePathScrewCount);
-                //    myData.PartsData[0].SetChangePartTime();
-                //}
-                DataSaveCount++;
-                //show
-                tb_Datetime_Ax4.Text = ssd._sd[3].ScrewDateTime;
-                tb_Torque_Ax4.Text = ssd._sd[3].TorqueResult;
-                tb_Angle_Ax4.Text = ssd._sd[3].AngleResult;
-                tb_Overrall_Ax4.Text = ssd._sd[3].OverrallStatus;
-                //傳到myDate
-                myData.SetScrewData(4, ssd._sd[3]);
-            }
-            catch (Exception error)
-            {
-                tb_Message.Text = "";
-                tb_Message.Text = error.ToString();
-            }
+            
         }
         //軸3
         private void ax3_DataReceived(object sender, SerialDataReceivedEventArgs e)
@@ -311,22 +288,22 @@ namespace _18_203
                 ////判斷沒螺絲就取新資料
                 //if (CurrentcountScrew.Count <= 0)
                 //{
-                //    CurrentcountScrew.ReloadData(FilePathScrewCount);
+                //    CurrentcountScrew.ReloadData(FilePathParts1);
                 //    myData.PartsData[0].SetChangePartTime();
                 //}
                 DataSaveCount++;
                 //show
-                tb_Datetime_Ax3.Text = ssd._sd[2].ScrewDateTime;
-                tb_Torque_Ax3.Text = ssd._sd[2].TorqueResult;
-                tb_Angle_Ax3.Text = ssd._sd[2].AngleResult;
-                tb_Overrall_Ax3.Text = ssd._sd[2].OverrallStatus;
+                DisplayTextBox(tb_Datetime_Ax4, ssd._sd[2].ScrewDateTime);
+                DisplayTextBox(tb_Torque_Ax4, ssd._sd[2].TorqueResult);
+                DisplayTextBox(tb_Angle_Ax4, ssd._sd[2].AngleResult);
+                DisplayTextBox(tb_Overrall_Ax4, ssd._sd[2].OverrallStatus);
                 //傳到myDate
                 myData.SetScrewData(3, ssd._sd[2]);
             }
             catch (Exception error)
             {
-                tb_Message.Text = "";
-                tb_Message.Text = "AX3:"+error.ToString();
+                DisplayTextBox(tb_Message, "");
+                DisplayTextBox(tb_Message, $"AX3:{error.ToString()}");
             }
         }
         //軸2
@@ -346,22 +323,22 @@ namespace _18_203
                 ////判斷沒螺絲就取新資料
                 //if (CurrentcountScrew.Count <= 0)
                 //{
-                //    CurrentcountScrew.ReloadData(FilePathScrewCount);
+                //    CurrentcountScrew.ReloadData(FilePathParts1);
                 //    myData.PartsData[0].SetChangePartTime();
                 //}
                 DataSaveCount++;
                 //show
-                tb_Datetime_Ax2.Text = ssd._sd[1].ScrewDateTime;
-                tb_Torque_Ax2.Text = ssd._sd[1].TorqueResult;
-                tb_Angle_Ax2.Text = ssd._sd[1].AngleResult;
-                tb_Overrall_Ax2.Text = ssd._sd[1].OverrallStatus;
+                DisplayTextBox(tb_Datetime_Ax2, ssd._sd[1].ScrewDateTime);
+                DisplayTextBox(tb_Torque_Ax2, ssd._sd[1].TorqueResult);
+                DisplayTextBox(tb_Angle_Ax2, ssd._sd[1].AngleResult);
+                DisplayTextBox(tb_Overrall_Ax2, ssd._sd[1].OverrallStatus);
                 //傳到myDate
                 myData.SetScrewData(2, ssd._sd[1]);
             }
             catch (Exception error)
             {
-                tb_Message.Text = "";
-                tb_Message.Text = "Ax2:"+error.ToString();
+                DisplayTextBox(tb_Message, "");
+                DisplayTextBox(tb_Message, $"AX2:{error.ToString()}");
             }
         }
         //軸1
@@ -381,22 +358,22 @@ namespace _18_203
                 ////判斷沒螺絲就取新資料
                 //if (CurrentcountScrew.Count <= 0)
                 //{
-                //    CurrentcountScrew.ReloadData(FilePathScrewCount);
+                //    CurrentcountScrew.ReloadData(FilePathParts1);
                 //    myData.PartsData[0].SetChangePartTime();
                 //}
                 DataSaveCount++;
                 //show
-                tb_Datetime_Ax1.Text = ssd._sd[0].ScrewDateTime;
-                tb_Torque_Ax1.Text = ssd._sd[0].TorqueResult;
-                tb_Angle_Ax1.Text = ssd._sd[0].AngleResult;
-                tb_Overrall_Ax1.Text = ssd._sd[0].OverrallStatus;
+                DisplayTextBox(tb_Datetime_Ax1, ssd._sd[0].ScrewDateTime);
+                DisplayTextBox(tb_Torque_Ax1, ssd._sd[0].TorqueResult);
+                DisplayTextBox(tb_Angle_Ax1, ssd._sd[0].AngleResult);
+                DisplayTextBox(tb_Overrall_Ax1, ssd._sd[0].OverrallStatus);
                 //傳到myDate
                 myData.SetScrewData(1, ssd._sd[0]);
             }
             catch (Exception error)
             {
-                tb_Message.Text = "";
-                tb_Message.Text = "Ax1:"+error.ToString();
+                DisplayTextBox(tb_Message, "");
+                DisplayTextBox(tb_Message, $"AX1:{error.ToString()}");
             }
         }
         #endregion
@@ -419,12 +396,22 @@ namespace _18_203
                     ssd.SaveScrewData(filePath, x,NumOfAxis);
                     NoBarcodeSeriealNo++;
                 }
-                CurrentcountScrew.SaveCountToFile(FilePathScrewCount);
-                
+                //扣除數量
+                CurrentcountParts1.Count--;
+                //判斷沒螺絲就取新資料
+                if (CurrentcountParts1.Count <= 0)
+                {
+                    CurrentcountParts1.ReloadData(FilePathParts1);
+                    myData.PartsData[0].SetChangePartTime();
+                }
+                else
+                {
+                    CurrentcountParts1.SaveCountToFile(FilePathParts1);
+                }
                 //PC->PLC寫檔完成
-                PLC1.Write(PLCSaveScrewDataFinish, 1);
+                PLC1.Write(PLCSaveScrewDataFinish, (Int16)1);
                 DataSaveCount = 0;
-                tb_ItemBarcode.Text = "";
+                
             }
             //PLC讀取
             ReadPLCDevice();
@@ -442,11 +429,11 @@ namespace _18_203
         //品號存檔
         private void pb_SetPartNo_Click(object sender, EventArgs e)
         {
-            ScrewPartNo = tb_ScrewPartNo.Text;
+            Parts1Barcode = tb_ScrewPartNo.Text;
             BodyBarcodeCheckCode = tbBodyBarcodeCheckCode.Text;
             XLWorkbook wb = new XLWorkbook(initailFilePath);
             var ws = wb.Worksheet(1);
-            ws.Cell("E2").Value = ScrewPartNo;
+            ws.Cell("E2").Value = Parts1Barcode;
             ws.Cell("F2").Value = BodyBarcodeCheckCode;
             ws.Columns().AdjustToContents();
             wb.Save();
@@ -455,68 +442,64 @@ namespace _18_203
         }
         private void pb_LoadScrew_Click(object sender, EventArgs e)
         {
-            CurrentcountScrew.LoadData(FilePathScrewCount);
+            CurrentcountParts1.LoadData(FilePathParts1);
         }
         private void pb_ReLoadScrew_Click(object sender, EventArgs e)
         {
-            CurrentcountScrew.ReloadData(FilePathScrewCount);
+            CurrentcountParts1.ReloadData(FilePathParts1);
             myData.PartsData[0].SetChangePartTime();
         }
         //檢查工件條碼
-        private void BarCodeCheck()
+        private bool BarCodeCheck(string text)
         {
             BodyBarcodeCheckCode = PLC1.ReadString("D5018", 10).Content;
+            BodyBarcodeCheckCode = BodyBarcodeCheckCode.Remove(BarcodeHeader);
             tbBodyBarcodeCheckCode.Text = BodyBarcodeCheckCode;
             if (!oldCheckBarcodeHeader.Equals(BodyBarcodeCheckCode))
             {
                 pb_SetPartNo_Click(null, null);
             }
-            string itemBarcode = tb_ItemBarcode.Text;//取得現在的BARCODE
+            string itemBarcode = text;//取得現在的BARCODE
             //檢查條碼頭碼是否和現在使用TYPE相同
             try
             {
-                string newss = itemBarcode.Remove(BodyBarcodeCheckCode.Length);//去掉工件條碼尾巴不用的字元
+                string newss = itemBarcode.Remove(BarcodeHeader);//去掉工件條碼尾巴不用的字元
                 if (newss.Equals(BodyBarcodeCheckCode))//比較頭碼和工作條碼
                 {
                     //OK
                     PLC1.Write(PLCBarcodeCheck, (Int16)0);
                     oldCheckBarcodeHeader = BodyBarcodeCheckCode;
+                    PLC1.Write(PLCBarcodeCheckStartFlag, (Int16)0);
+                    return true;
                 }
                 else
                 {
                     //NOK
                     PLC1.Write(PLCBarcodeHeaderNOK, (Int16)1);
+                    PLC1.Write(PLCBarcodeCheckStartFlag, (Int16)0);
+                    return false;
                 }
             }
             catch (Exception e)
             {
-                tb_Message.Text = e.ToString();
+                DisplayTextBox(tb_Message, $"檢查條碼:{e.ToString()}");
+                PLC1.Write(PLCBarcodeCheckStartFlag, (Int16)0);
+                return false;
             }
-            PLC1.Write(PLCBarcodeCheckStartFlag, (Int16)0);
         }
         //取得物件BARCODE
         private void GetObjectBarcode()
         {
-            ssd.ScrewBarcode = CurrentcountScrew.Barcode;
-            ssd.SiteBarcode = CurrentcountSite.Barcode;
-            ssd.RsBarcode = CurrentcountRS.Barcode;
-            ssd.TopCapBarcode = CurrentcountTopCap.Barcode;
-            ssd.BottomCapBarcode = CurrentcountBottomCap.Barcode;
+            ssd.Parts1Barcode = CurrentcountParts1.Barcode;
+            //ssd.SiteBarcode = CurrentcountSite.Barcode;
+            //ssd.RsBarcode = CurrentcountRS.Barcode;
+            //ssd.TopCapBarcode = CurrentcountTopCap.Barcode;
+            //ssd.BottomCapBarcode = CurrentcountBottomCap.Barcode;
         }
         //取得物件資料
         private void GetObjectData()
         {
-            CurrentcountScrew.LoadData(FilePathScrewCount);
-            //if (NumOfAxis == 3)
-            //{
-            //    CurrentcountSite.LoadData(FilePathSiteCount);
-            //}
-            //CurrentcountRS.LoadData(FilePathRSCount);
-            //CurrentcountTopCap.LoadData(FilePathTopCapCount);
-            //if (NumOfAxis==4)
-            //{
-            //    CurrentcountBottomCap.LoadData(FilePathBottomCapCount);
-            //}
+            CurrentcountParts1.LoadData(FilePathParts1);
         }
         #endregion
         #region --螢幕顯示--
@@ -524,11 +507,11 @@ namespace _18_203
         {
             #region --主頁--
             //tb_ItemBarcode.Text = ssd.ItemBarcode;
-            tb_ScrewBarcode.Text = CurrentcountScrew.Barcode;
-            tb_CountOfScrew.Text = CurrentcountScrew.Count.ToString();
+            tb_ScrewBarcode.Text = CurrentcountParts1.Barcode;
+            tb_CountOfScrew.Text = CurrentcountParts1.Count.ToString();
             #endregion
             #region --工程頁--
-            tb_CountOfScrew_E.Text = CurrentcountScrew.Count.ToString();
+            tb_CountOfScrew_E.Text = CurrentcountParts1.Count.ToString();
             #endregion
             #region --上報資料頁--
             //狀態
@@ -593,6 +576,19 @@ namespace _18_203
             }
             #endregion
         }
+        delegate void displayTextBoxCallback(TextBox tb,string showText);
+        private void DisplayTextBox(TextBox tb,string showText)
+        {
+            if (tb.InvokeRequired)
+            {
+                displayTextBoxCallback d = new displayTextBoxCallback(DisplayTextBox);
+                this.Invoke(d, new object[] { tb, showText });
+            }
+            else
+            {
+                tb.Text = showText;
+            }
+        }
         #endregion
         #region --手動輸入條碼--
         private void pbInputBarcode7110_Click(object sender, EventArgs e)
@@ -604,15 +600,15 @@ namespace _18_203
             if (newstring.Length == 5)
             {
                 //螺絲條碼
-                if (newstring[1] == ScrewPartNo)
+                if (newstring[1] == Parts1Barcode)
                 {
                     ObjectBarcodeAndCount obj = new ObjectBarcodeAndCount();
                     obj.Barcode = ss;
                     obj.Count = Convert.ToInt32(newstring[3]);
-                    obj.AddNewData(FilePathScrewCount);
+                    obj.AddNewData(FilePathParts1);
                 }
                 //如果都不符合
-                if (newstring[1] != ScrewPartNo)
+                if (newstring[1] != Parts1Barcode)
                 {
                     MessageBox.Show("無符合的品號");
                 }
@@ -646,13 +642,13 @@ namespace _18_203
         private void CheckNoOfObject()
         {
             //螺絲
-            if (CurrentcountScrew.Count <= 0)
+            if (CurrentcountParts1.Count <= 0)
             {
-                PLC1.Write(PLCOutOfScrew, (Int16)0);
+                PLC1.Write(PLCOutOfParts1, (Int16)0);
             }
             else
             {
-                PLC1.Write(PLCOutOfScrew, (Int16)1);
+                PLC1.Write(PLCOutOfParts1, (Int16)1);
             }
         }
         #endregion
@@ -676,8 +672,8 @@ namespace _18_203
             myData.StaffReadFlag = 0;
             myData.SetStaffID(" ");
             //材料ID
-            myData.PartsData[0].SetPartsID(CurrentcountScrew.Barcode);
-            myData.PartsData[0].count = Convert.ToInt16( CurrentcountScrew.Count);
+            myData.PartsData[0].SetPartsID(CurrentcountParts1.Barcode);
+            myData.PartsData[0].count = Convert.ToInt16( CurrentcountParts1.Count);
             //if (NumOfAxis==3)
             //{
             //    myData.PartsData[1].SetPartsID(CurrentcountSite.Barcode);
@@ -693,7 +689,7 @@ namespace _18_203
             {
                 myData.SetResetMachineCountTime();
                 PLCResetMachineCountStatus = 0;
-                PLC1.Write(PLCResetMachineCountFlag, 0);
+                PLC1.Write(PLCResetMachineCountFlag, (Int16)0);
             }
         }
         /// <summary>
@@ -808,15 +804,12 @@ namespace _18_203
         }
         #endregion
         #region --其他--
-        private void pb_GetBarcodeHeader_Click(object sender, EventArgs e)
-        {
-        }
         //測試用
         private void button1_Click(object sender, EventArgs e)
         {
-            BarCodeCheck();
+            string checkText = tb_ItemBarcode.Text;
+            BarCodeCheck(checkText);
         }
-
         #endregion
     }
 }

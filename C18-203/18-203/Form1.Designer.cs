@@ -38,28 +38,6 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
-            this.label19 = new System.Windows.Forms.Label();
-            this.tb_Torque_Ax3 = new System.Windows.Forms.TextBox();
-            this.label20 = new System.Windows.Forms.Label();
-            this.tb_Datetime_Ax3 = new System.Windows.Forms.TextBox();
-            this.tb_Angle_Ax3 = new System.Windows.Forms.TextBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.tb_Overrall_Ax3 = new System.Windows.Forms.TextBox();
-            this.label28 = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.label12 = new System.Windows.Forms.Label();
-            this.tb_Torque_Ax4 = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.tb_Datetime_Ax4 = new System.Windows.Forms.TextBox();
-            this.tb_Angle_Ax4 = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.tb_Overrall_Ax4 = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.label10 = new System.Windows.Forms.Label();
@@ -270,6 +248,7 @@
             this.tbStaffID = new System.Windows.Forms.TextBox();
             this.tbStaffReadFlag = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
             this.tbBodyBarcodeCheckCode = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.pb_ReLoadScrew = new System.Windows.Forms.Button();
@@ -278,15 +257,32 @@
             this.tb_ScrewPartNo = new System.Windows.Forms.TextBox();
             this.label27 = new System.Windows.Forms.Label();
             this.tb_Message = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
+            this.label19 = new System.Windows.Forms.Label();
+            this.tb_Torque_Ax3 = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.tb_Datetime_Ax3 = new System.Windows.Forms.TextBox();
+            this.tb_Angle_Ax3 = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.tb_Overrall_Ax3 = new System.Windows.Forms.TextBox();
+            this.label28 = new System.Windows.Forms.Label();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.label12 = new System.Windows.Forms.Label();
+            this.tb_Torque_Ax4 = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.tb_Datetime_Ax4 = new System.Windows.Forms.TextBox();
+            this.tb_Angle_Ax4 = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.tb_Overrall_Ax4 = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            this.tableLayoutPanel6.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.tableLayoutPanel5.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -318,6 +314,10 @@
             this.groupBox7.SuspendLayout();
             this.tableLayoutPanel10.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.tableLayoutPanel6.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.tableLayoutPanel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // timer1
@@ -356,9 +356,8 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(138, 37);
             this.label2.TabIndex = 5;
-            this.label2.Text = "螺絲條碼";
+            this.label2.Text = "材料ID";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label2.Visible = false;
             // 
             // tb_ScrewBarcode
             // 
@@ -369,7 +368,6 @@
             this.tb_ScrewBarcode.Name = "tb_ScrewBarcode";
             this.tb_ScrewBarcode.Size = new System.Drawing.Size(873, 27);
             this.tb_ScrewBarcode.TabIndex = 4;
-            this.tb_ScrewBarcode.Visible = false;
             // 
             // tabControl1
             // 
@@ -433,288 +431,6 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(1328, 439);
             this.tableLayoutPanel2.TabIndex = 0;
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.tableLayoutPanel6);
-            this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox4.Location = new System.Drawing.Point(8, 226);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(5);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(5);
-            this.groupBox4.Size = new System.Drawing.Size(649, 205);
-            this.groupBox4.TabIndex = 17;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "軸3";
-            // 
-            // tableLayoutPanel6
-            // 
-            this.tableLayoutPanel6.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.tableLayoutPanel6.ColumnCount = 2;
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
-            this.tableLayoutPanel6.Controls.Add(this.label19, 0, 1);
-            this.tableLayoutPanel6.Controls.Add(this.tb_Torque_Ax3, 1, 1);
-            this.tableLayoutPanel6.Controls.Add(this.label20, 0, 0);
-            this.tableLayoutPanel6.Controls.Add(this.tb_Datetime_Ax3, 1, 0);
-            this.tableLayoutPanel6.Controls.Add(this.tb_Angle_Ax3, 1, 2);
-            this.tableLayoutPanel6.Controls.Add(this.label21, 0, 3);
-            this.tableLayoutPanel6.Controls.Add(this.label22, 0, 4);
-            this.tableLayoutPanel6.Controls.Add(this.tb_Overrall_Ax3, 1, 3);
-            this.tableLayoutPanel6.Controls.Add(this.label28, 0, 2);
-            this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(5, 27);
-            this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(5);
-            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
-            this.tableLayoutPanel6.RowCount = 5;
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(639, 173);
-            this.tableLayoutPanel6.TabIndex = 16;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label19.Location = new System.Drawing.Point(6, 35);
-            this.label19.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(244, 33);
-            this.label19.TabIndex = 10;
-            this.label19.Text = "扭力";
-            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // tb_Torque_Ax3
-            // 
-            this.tb_Torque_Ax3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tb_Torque_Ax3.Location = new System.Drawing.Point(261, 40);
-            this.tb_Torque_Ax3.Margin = new System.Windows.Forms.Padding(5);
-            this.tb_Torque_Ax3.Multiline = true;
-            this.tb_Torque_Ax3.Name = "tb_Torque_Ax3";
-            this.tb_Torque_Ax3.Size = new System.Drawing.Size(372, 23);
-            this.tb_Torque_Ax3.TabIndex = 9;
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label20.Location = new System.Drawing.Point(6, 1);
-            this.label20.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(244, 33);
-            this.label20.TabIndex = 8;
-            this.label20.Text = "日期時間";
-            this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // tb_Datetime_Ax3
-            // 
-            this.tb_Datetime_Ax3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tb_Datetime_Ax3.Location = new System.Drawing.Point(261, 6);
-            this.tb_Datetime_Ax3.Margin = new System.Windows.Forms.Padding(5);
-            this.tb_Datetime_Ax3.Multiline = true;
-            this.tb_Datetime_Ax3.Name = "tb_Datetime_Ax3";
-            this.tb_Datetime_Ax3.Size = new System.Drawing.Size(372, 23);
-            this.tb_Datetime_Ax3.TabIndex = 7;
-            // 
-            // tb_Angle_Ax3
-            // 
-            this.tb_Angle_Ax3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tb_Angle_Ax3.Location = new System.Drawing.Point(261, 74);
-            this.tb_Angle_Ax3.Margin = new System.Windows.Forms.Padding(5);
-            this.tb_Angle_Ax3.Multiline = true;
-            this.tb_Angle_Ax3.Name = "tb_Angle_Ax3";
-            this.tb_Angle_Ax3.Size = new System.Drawing.Size(372, 23);
-            this.tb_Angle_Ax3.TabIndex = 11;
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label21.Location = new System.Drawing.Point(6, 103);
-            this.label21.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(244, 33);
-            this.label21.TabIndex = 14;
-            this.label21.Text = "判定";
-            this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label22.Location = new System.Drawing.Point(6, 137);
-            this.label22.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(244, 35);
-            this.label22.TabIndex = 15;
-            this.label22.Text = "判定A=OK,R=NOK";
-            this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // tb_Overrall_Ax3
-            // 
-            this.tb_Overrall_Ax3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tb_Overrall_Ax3.Location = new System.Drawing.Point(261, 108);
-            this.tb_Overrall_Ax3.Margin = new System.Windows.Forms.Padding(5);
-            this.tb_Overrall_Ax3.Multiline = true;
-            this.tb_Overrall_Ax3.Name = "tb_Overrall_Ax3";
-            this.tb_Overrall_Ax3.Size = new System.Drawing.Size(372, 23);
-            this.tb_Overrall_Ax3.TabIndex = 13;
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label28.Location = new System.Drawing.Point(6, 69);
-            this.label28.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(244, 33);
-            this.label28.TabIndex = 12;
-            this.label28.Text = "角度";
-            this.label28.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.tableLayoutPanel5);
-            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox3.Location = new System.Drawing.Point(670, 226);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(5);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(5);
-            this.groupBox3.Size = new System.Drawing.Size(650, 205);
-            this.groupBox3.TabIndex = 16;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "軸4";
-            // 
-            // tableLayoutPanel5
-            // 
-            this.tableLayoutPanel5.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.tableLayoutPanel5.ColumnCount = 2;
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
-            this.tableLayoutPanel5.Controls.Add(this.label12, 0, 1);
-            this.tableLayoutPanel5.Controls.Add(this.tb_Torque_Ax4, 1, 1);
-            this.tableLayoutPanel5.Controls.Add(this.label13, 0, 0);
-            this.tableLayoutPanel5.Controls.Add(this.tb_Datetime_Ax4, 1, 0);
-            this.tableLayoutPanel5.Controls.Add(this.tb_Angle_Ax4, 1, 2);
-            this.tableLayoutPanel5.Controls.Add(this.label14, 0, 3);
-            this.tableLayoutPanel5.Controls.Add(this.label17, 0, 4);
-            this.tableLayoutPanel5.Controls.Add(this.tb_Overrall_Ax4, 1, 3);
-            this.tableLayoutPanel5.Controls.Add(this.label18, 0, 2);
-            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(5, 27);
-            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(5);
-            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-            this.tableLayoutPanel5.RowCount = 5;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(640, 173);
-            this.tableLayoutPanel5.TabIndex = 16;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label12.Location = new System.Drawing.Point(6, 35);
-            this.label12.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(244, 33);
-            this.label12.TabIndex = 10;
-            this.label12.Text = "扭力";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // tb_Torque_Ax4
-            // 
-            this.tb_Torque_Ax4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tb_Torque_Ax4.Location = new System.Drawing.Point(261, 40);
-            this.tb_Torque_Ax4.Margin = new System.Windows.Forms.Padding(5);
-            this.tb_Torque_Ax4.Multiline = true;
-            this.tb_Torque_Ax4.Name = "tb_Torque_Ax4";
-            this.tb_Torque_Ax4.Size = new System.Drawing.Size(373, 23);
-            this.tb_Torque_Ax4.TabIndex = 9;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label13.Location = new System.Drawing.Point(6, 1);
-            this.label13.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(244, 33);
-            this.label13.TabIndex = 8;
-            this.label13.Text = "日期時間";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // tb_Datetime_Ax4
-            // 
-            this.tb_Datetime_Ax4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tb_Datetime_Ax4.Location = new System.Drawing.Point(261, 6);
-            this.tb_Datetime_Ax4.Margin = new System.Windows.Forms.Padding(5);
-            this.tb_Datetime_Ax4.Multiline = true;
-            this.tb_Datetime_Ax4.Name = "tb_Datetime_Ax4";
-            this.tb_Datetime_Ax4.Size = new System.Drawing.Size(373, 23);
-            this.tb_Datetime_Ax4.TabIndex = 7;
-            // 
-            // tb_Angle_Ax4
-            // 
-            this.tb_Angle_Ax4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tb_Angle_Ax4.Location = new System.Drawing.Point(261, 74);
-            this.tb_Angle_Ax4.Margin = new System.Windows.Forms.Padding(5);
-            this.tb_Angle_Ax4.Multiline = true;
-            this.tb_Angle_Ax4.Name = "tb_Angle_Ax4";
-            this.tb_Angle_Ax4.Size = new System.Drawing.Size(373, 23);
-            this.tb_Angle_Ax4.TabIndex = 11;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label14.Location = new System.Drawing.Point(6, 103);
-            this.label14.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(244, 33);
-            this.label14.TabIndex = 14;
-            this.label14.Text = "判定";
-            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label17.Location = new System.Drawing.Point(6, 137);
-            this.label17.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(244, 35);
-            this.label17.TabIndex = 15;
-            this.label17.Text = "判定A=OK,R=NOK";
-            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // tb_Overrall_Ax4
-            // 
-            this.tb_Overrall_Ax4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tb_Overrall_Ax4.Location = new System.Drawing.Point(261, 108);
-            this.tb_Overrall_Ax4.Margin = new System.Windows.Forms.Padding(5);
-            this.tb_Overrall_Ax4.Multiline = true;
-            this.tb_Overrall_Ax4.Name = "tb_Overrall_Ax4";
-            this.tb_Overrall_Ax4.Size = new System.Drawing.Size(373, 23);
-            this.tb_Overrall_Ax4.TabIndex = 13;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label18.Location = new System.Drawing.Point(6, 69);
-            this.label18.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(244, 33);
-            this.label18.TabIndex = 12;
-            this.label18.Text = "角度";
-            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // groupBox2
             // 
@@ -1040,7 +756,6 @@
             this.pb_LoadScrew.TabIndex = 46;
             this.pb_LoadScrew.Text = "重取數量";
             this.pb_LoadScrew.UseVisualStyleBackColor = true;
-            this.pb_LoadScrew.Visible = false;
             this.pb_LoadScrew.Click += new System.EventHandler(this.pb_LoadScrew_Click);
             // 
             // tb_CountOfScrew
@@ -1053,7 +768,6 @@
             this.tb_CountOfScrew.Size = new System.Drawing.Size(102, 27);
             this.tb_CountOfScrew.TabIndex = 23;
             this.tb_CountOfScrew.Text = "0";
-            this.tb_CountOfScrew.Visible = false;
             // 
             // label34
             // 
@@ -1066,7 +780,6 @@
             this.label34.TabIndex = 24;
             this.label34.Text = "數量";
             this.label34.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label34.Visible = false;
             // 
             // label113
             // 
@@ -1133,11 +846,10 @@
             // 
             // tbInputBarcode
             // 
-            this.tbInputBarcode.Location = new System.Drawing.Point(123, 16);
+            this.tbInputBarcode.Location = new System.Drawing.Point(119, 16);
             this.tbInputBarcode.Name = "tbInputBarcode";
-            this.tbInputBarcode.Size = new System.Drawing.Size(368, 29);
+            this.tbInputBarcode.Size = new System.Drawing.Size(387, 29);
             this.tbInputBarcode.TabIndex = 7;
-            this.tbInputBarcode.Visible = false;
             // 
             // label147
             // 
@@ -1147,17 +859,15 @@
             this.label147.Size = new System.Drawing.Size(109, 20);
             this.label147.TabIndex = 10;
             this.label147.Text = "材料條碼輸入:";
-            this.label147.Visible = false;
             // 
             // pbInputBarcode7110
             // 
-            this.pbInputBarcode7110.Location = new System.Drawing.Point(497, 10);
+            this.pbInputBarcode7110.Location = new System.Drawing.Point(512, 10);
             this.pbInputBarcode7110.Name = "pbInputBarcode7110";
-            this.pbInputBarcode7110.Size = new System.Drawing.Size(117, 42);
+            this.pbInputBarcode7110.Size = new System.Drawing.Size(102, 42);
             this.pbInputBarcode7110.TabIndex = 8;
             this.pbInputBarcode7110.Text = "儲存";
             this.pbInputBarcode7110.UseVisualStyleBackColor = true;
-            this.pbInputBarcode7110.Visible = false;
             this.pbInputBarcode7110.Click += new System.EventHandler(this.pbInputBarcode7110_Click);
             // 
             // tabPage3
@@ -3052,6 +2762,17 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "工程頁";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(1007, 595);
+            this.button1.Margin = new System.Windows.Forms.Padding(5);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(133, 37);
+            this.button1.TabIndex = 61;
+            this.button1.Text = "test";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // tbBodyBarcodeCheckCode
             // 
             this.tbBodyBarcodeCheckCode.Location = new System.Drawing.Point(153, 510);
@@ -3072,31 +2793,29 @@
             // 
             // pb_ReLoadScrew
             // 
-            this.pb_ReLoadScrew.Location = new System.Drawing.Point(815, 314);
+            this.pb_ReLoadScrew.Location = new System.Drawing.Point(759, 314);
             this.pb_ReLoadScrew.Margin = new System.Windows.Forms.Padding(5);
             this.pb_ReLoadScrew.Name = "pb_ReLoadScrew";
             this.pb_ReLoadScrew.Size = new System.Drawing.Size(133, 37);
             this.pb_ReLoadScrew.TabIndex = 51;
             this.pb_ReLoadScrew.Text = "更新條碼檔案";
             this.pb_ReLoadScrew.UseVisualStyleBackColor = true;
-            this.pb_ReLoadScrew.Visible = false;
             this.pb_ReLoadScrew.Click += new System.EventHandler(this.pb_ReLoadScrew_Click);
             // 
             // tb_CountOfScrew_E
             // 
-            this.tb_CountOfScrew_E.Location = new System.Drawing.Point(709, 319);
+            this.tb_CountOfScrew_E.Location = new System.Drawing.Point(653, 319);
             this.tb_CountOfScrew_E.Margin = new System.Windows.Forms.Padding(5);
             this.tb_CountOfScrew_E.Name = "tb_CountOfScrew_E";
             this.tb_CountOfScrew_E.Size = new System.Drawing.Size(96, 29);
             this.tb_CountOfScrew_E.TabIndex = 36;
-            this.tb_CountOfScrew_E.Visible = false;
             // 
             // pb_SetPartNo
             // 
             this.pb_SetPartNo.Location = new System.Drawing.Point(10, 550);
             this.pb_SetPartNo.Margin = new System.Windows.Forms.Padding(5);
             this.pb_SetPartNo.Name = "pb_SetPartNo";
-            this.pb_SetPartNo.Size = new System.Drawing.Size(232, 37);
+            this.pb_SetPartNo.Size = new System.Drawing.Size(178, 37);
             this.pb_SetPartNo.TabIndex = 19;
             this.pb_SetPartNo.Text = "變更參數";
             this.pb_SetPartNo.UseVisualStyleBackColor = true;
@@ -3104,12 +2823,11 @@
             // 
             // tb_ScrewPartNo
             // 
-            this.tb_ScrewPartNo.Location = new System.Drawing.Point(153, 319);
+            this.tb_ScrewPartNo.Location = new System.Drawing.Point(97, 319);
             this.tb_ScrewPartNo.Margin = new System.Windows.Forms.Padding(5);
             this.tb_ScrewPartNo.Name = "tb_ScrewPartNo";
             this.tb_ScrewPartNo.Size = new System.Drawing.Size(546, 29);
             this.tb_ScrewPartNo.TabIndex = 14;
-            this.tb_ScrewPartNo.Visible = false;
             // 
             // label27
             // 
@@ -3120,7 +2838,6 @@
             this.label27.Size = new System.Drawing.Size(77, 20);
             this.label27.TabIndex = 13;
             this.label27.Text = "材料品號:";
-            this.label27.Visible = false;
             // 
             // tb_Message
             // 
@@ -3131,16 +2848,287 @@
             this.tb_Message.Size = new System.Drawing.Size(1334, 82);
             this.tb_Message.TabIndex = 0;
             // 
-            // button1
+            // groupBox3
             // 
-            this.button1.Location = new System.Drawing.Point(859, 595);
-            this.button1.Margin = new System.Windows.Forms.Padding(5);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(133, 37);
-            this.button1.TabIndex = 61;
-            this.button1.Text = "test";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.groupBox3.Controls.Add(this.tableLayoutPanel6);
+            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox3.Location = new System.Drawing.Point(670, 226);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(5);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(5);
+            this.groupBox3.Size = new System.Drawing.Size(650, 205);
+            this.groupBox3.TabIndex = 17;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "軸3";
+            // 
+            // tableLayoutPanel6
+            // 
+            this.tableLayoutPanel6.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.tableLayoutPanel6.ColumnCount = 2;
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
+            this.tableLayoutPanel6.Controls.Add(this.label19, 0, 1);
+            this.tableLayoutPanel6.Controls.Add(this.tb_Torque_Ax3, 1, 1);
+            this.tableLayoutPanel6.Controls.Add(this.label20, 0, 0);
+            this.tableLayoutPanel6.Controls.Add(this.tb_Datetime_Ax3, 1, 0);
+            this.tableLayoutPanel6.Controls.Add(this.tb_Angle_Ax3, 1, 2);
+            this.tableLayoutPanel6.Controls.Add(this.label21, 0, 3);
+            this.tableLayoutPanel6.Controls.Add(this.label22, 0, 4);
+            this.tableLayoutPanel6.Controls.Add(this.tb_Overrall_Ax3, 1, 3);
+            this.tableLayoutPanel6.Controls.Add(this.label28, 0, 2);
+            this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(5, 27);
+            this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(5);
+            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
+            this.tableLayoutPanel6.RowCount = 5;
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(640, 173);
+            this.tableLayoutPanel6.TabIndex = 16;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label19.Location = new System.Drawing.Point(6, 35);
+            this.label19.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(244, 33);
+            this.label19.TabIndex = 10;
+            this.label19.Text = "扭力";
+            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // tb_Torque_Ax3
+            // 
+            this.tb_Torque_Ax3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tb_Torque_Ax3.Location = new System.Drawing.Point(261, 40);
+            this.tb_Torque_Ax3.Margin = new System.Windows.Forms.Padding(5);
+            this.tb_Torque_Ax3.Multiline = true;
+            this.tb_Torque_Ax3.Name = "tb_Torque_Ax3";
+            this.tb_Torque_Ax3.Size = new System.Drawing.Size(373, 23);
+            this.tb_Torque_Ax3.TabIndex = 9;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label20.Location = new System.Drawing.Point(6, 1);
+            this.label20.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(244, 33);
+            this.label20.TabIndex = 8;
+            this.label20.Text = "日期時間";
+            this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // tb_Datetime_Ax3
+            // 
+            this.tb_Datetime_Ax3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tb_Datetime_Ax3.Location = new System.Drawing.Point(261, 6);
+            this.tb_Datetime_Ax3.Margin = new System.Windows.Forms.Padding(5);
+            this.tb_Datetime_Ax3.Multiline = true;
+            this.tb_Datetime_Ax3.Name = "tb_Datetime_Ax3";
+            this.tb_Datetime_Ax3.Size = new System.Drawing.Size(373, 23);
+            this.tb_Datetime_Ax3.TabIndex = 7;
+            // 
+            // tb_Angle_Ax3
+            // 
+            this.tb_Angle_Ax3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tb_Angle_Ax3.Location = new System.Drawing.Point(261, 74);
+            this.tb_Angle_Ax3.Margin = new System.Windows.Forms.Padding(5);
+            this.tb_Angle_Ax3.Multiline = true;
+            this.tb_Angle_Ax3.Name = "tb_Angle_Ax3";
+            this.tb_Angle_Ax3.Size = new System.Drawing.Size(373, 23);
+            this.tb_Angle_Ax3.TabIndex = 11;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label21.Location = new System.Drawing.Point(6, 103);
+            this.label21.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(244, 33);
+            this.label21.TabIndex = 14;
+            this.label21.Text = "判定";
+            this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label22.Location = new System.Drawing.Point(6, 137);
+            this.label22.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(244, 35);
+            this.label22.TabIndex = 15;
+            this.label22.Text = "判定A=OK,R=NOK";
+            this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // tb_Overrall_Ax3
+            // 
+            this.tb_Overrall_Ax3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tb_Overrall_Ax3.Location = new System.Drawing.Point(261, 108);
+            this.tb_Overrall_Ax3.Margin = new System.Windows.Forms.Padding(5);
+            this.tb_Overrall_Ax3.Multiline = true;
+            this.tb_Overrall_Ax3.Name = "tb_Overrall_Ax3";
+            this.tb_Overrall_Ax3.Size = new System.Drawing.Size(373, 23);
+            this.tb_Overrall_Ax3.TabIndex = 13;
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label28.Location = new System.Drawing.Point(6, 69);
+            this.label28.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(244, 33);
+            this.label28.TabIndex = 12;
+            this.label28.Text = "角度";
+            this.label28.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.tableLayoutPanel5);
+            this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox4.Location = new System.Drawing.Point(8, 226);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(5);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(5);
+            this.groupBox4.Size = new System.Drawing.Size(649, 205);
+            this.groupBox4.TabIndex = 18;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "軸4";
+            // 
+            // tableLayoutPanel5
+            // 
+            this.tableLayoutPanel5.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.tableLayoutPanel5.ColumnCount = 2;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
+            this.tableLayoutPanel5.Controls.Add(this.label12, 0, 1);
+            this.tableLayoutPanel5.Controls.Add(this.tb_Torque_Ax4, 1, 1);
+            this.tableLayoutPanel5.Controls.Add(this.label13, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.tb_Datetime_Ax4, 1, 0);
+            this.tableLayoutPanel5.Controls.Add(this.tb_Angle_Ax4, 1, 2);
+            this.tableLayoutPanel5.Controls.Add(this.label14, 0, 3);
+            this.tableLayoutPanel5.Controls.Add(this.label17, 0, 4);
+            this.tableLayoutPanel5.Controls.Add(this.tb_Overrall_Ax4, 1, 3);
+            this.tableLayoutPanel5.Controls.Add(this.label18, 0, 2);
+            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(5, 27);
+            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(5);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 5;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(639, 173);
+            this.tableLayoutPanel5.TabIndex = 16;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label12.Location = new System.Drawing.Point(6, 35);
+            this.label12.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(244, 33);
+            this.label12.TabIndex = 10;
+            this.label12.Text = "扭力";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // tb_Torque_Ax4
+            // 
+            this.tb_Torque_Ax4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tb_Torque_Ax4.Location = new System.Drawing.Point(261, 40);
+            this.tb_Torque_Ax4.Margin = new System.Windows.Forms.Padding(5);
+            this.tb_Torque_Ax4.Multiline = true;
+            this.tb_Torque_Ax4.Name = "tb_Torque_Ax4";
+            this.tb_Torque_Ax4.Size = new System.Drawing.Size(372, 23);
+            this.tb_Torque_Ax4.TabIndex = 9;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label13.Location = new System.Drawing.Point(6, 1);
+            this.label13.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(244, 33);
+            this.label13.TabIndex = 8;
+            this.label13.Text = "日期時間";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // tb_Datetime_Ax4
+            // 
+            this.tb_Datetime_Ax4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tb_Datetime_Ax4.Location = new System.Drawing.Point(261, 6);
+            this.tb_Datetime_Ax4.Margin = new System.Windows.Forms.Padding(5);
+            this.tb_Datetime_Ax4.Multiline = true;
+            this.tb_Datetime_Ax4.Name = "tb_Datetime_Ax4";
+            this.tb_Datetime_Ax4.Size = new System.Drawing.Size(372, 23);
+            this.tb_Datetime_Ax4.TabIndex = 7;
+            // 
+            // tb_Angle_Ax4
+            // 
+            this.tb_Angle_Ax4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tb_Angle_Ax4.Location = new System.Drawing.Point(261, 74);
+            this.tb_Angle_Ax4.Margin = new System.Windows.Forms.Padding(5);
+            this.tb_Angle_Ax4.Multiline = true;
+            this.tb_Angle_Ax4.Name = "tb_Angle_Ax4";
+            this.tb_Angle_Ax4.Size = new System.Drawing.Size(372, 23);
+            this.tb_Angle_Ax4.TabIndex = 11;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label14.Location = new System.Drawing.Point(6, 103);
+            this.label14.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(244, 33);
+            this.label14.TabIndex = 14;
+            this.label14.Text = "判定";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label17.Location = new System.Drawing.Point(6, 137);
+            this.label17.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(244, 35);
+            this.label17.TabIndex = 15;
+            this.label17.Text = "判定A=OK,R=NOK";
+            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // tb_Overrall_Ax4
+            // 
+            this.tb_Overrall_Ax4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tb_Overrall_Ax4.Location = new System.Drawing.Point(261, 108);
+            this.tb_Overrall_Ax4.Margin = new System.Windows.Forms.Padding(5);
+            this.tb_Overrall_Ax4.Multiline = true;
+            this.tb_Overrall_Ax4.Name = "tb_Overrall_Ax4";
+            this.tb_Overrall_Ax4.Size = new System.Drawing.Size(372, 23);
+            this.tb_Overrall_Ax4.TabIndex = 13;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label18.Location = new System.Drawing.Point(6, 69);
+            this.label18.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(244, 33);
+            this.label18.TabIndex = 12;
+            this.label18.Text = "角度";
+            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Form1
             // 
@@ -3160,12 +3148,6 @@
             this.tabPage1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
-            this.groupBox4.ResumeLayout(false);
-            this.tableLayoutPanel6.ResumeLayout(false);
-            this.tableLayoutPanel6.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.tableLayoutPanel5.ResumeLayout(false);
-            this.tableLayoutPanel5.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
@@ -3214,6 +3196,12 @@
             this.tableLayoutPanel10.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.tableLayoutPanel6.ResumeLayout(false);
+            this.tableLayoutPanel6.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.tableLayoutPanel5.ResumeLayout(false);
+            this.tableLayoutPanel5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -3446,7 +3434,8 @@
         private System.Windows.Forms.Button pbSetMachineRunSetting;
         private System.Windows.Forms.TextBox tbBodyBarcodeCheckCode;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.TextBox tb_Torque_Ax3;
@@ -3457,7 +3446,7 @@
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.TextBox tb_Overrall_Ax3;
         private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox tb_Torque_Ax4;
@@ -3468,7 +3457,6 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox tb_Overrall_Ax4;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Button button1;
     }
 }
 
